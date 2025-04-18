@@ -52,6 +52,14 @@
 - 每次发布 tag 时自动构建产物、生成 changelog、发布 GitHub Release
 - 生成后的 `dist/` 目录仅包含打包后的运行时代码（不含源码）
 
+🌐 **国际化（i18n）支持**：
+- 所有用户可见的通知文本需支持国际化，至少支持中英文切换
+- 文本内容应从国际化词库中读取，而非硬编码字符串
+- 使用简单的 JSON 文件存储语言包，如 `locales/zh-CN.json`、`locales/en-US.json`
+- 语言通过 `config.yml` 中配置，如：`language: zh-CN`
+- 模板中使用占位符（如 `{{ pr.title }}`）自动填入上下文，支持多语言渲染
+- 用户可自定义语言包并覆盖默认内容
+
 🛠️ **项目开发脚本（`package.json`）应包含**：
 - `npm run dev`：开发模式运行，支持实时调试
 - `npm run build`：使用 `ncc` 构建 dist
